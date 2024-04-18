@@ -7,10 +7,16 @@ import assignmentdaytwo.Model.Address;
 import assignmentdaytwo.Model.Classes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Filter {
-    
+            String pincode;
+            String gender;
+            Integer age;
+            String classes;
+                    
+//          Filter by City Without Stream
             public static List<Student> filterByCity(String city){
                 List<Student> student = new ArrayList<Student>();
                 List<Integer> studentId = new ArrayList<Integer>();
@@ -29,25 +35,40 @@ public class Filter {
                 return student;
             }
             
-            //Filter By Pincode
-             public static List<Student> filterByPincode(Integer pincode){
-            List<Student> student = new ArrayList<Student>();
-            List<Integer> studentId = new ArrayList<Integer>();
+//            Filter By City With Stream
             
-            for(Address address : addressList){
-                if(address.getPin_code()==pincode){
-                    studentId.add(address.getStudent_id());
-                }
-            }
             
-            for(Student s :studentList){
-                if(studentId.contains(s.getId())){
-                        student.add(s);
-                }
-            }     
-//            studentId.stream().forEach(System.out::println);
-             return student;
-          }
+            //Filter By Pincode Without Stream
+//             public static List<Student> filterByPincode(Integer pincode){
+//            List<Student> student = new ArrayList<Student>();
+//            List<Integer> studentId = new ArrayList<Integer>();
+//            
+//            for(Address address : addressList){
+//                if(address.getPin_code()==pincode){
+//                    studentId.add(address.getStudent_id());
+//                }
+//            }
+//            
+//            for(Student s :studentList){
+//                if(studentId.contains(s.getId())){
+//                        student.add(s);
+//                }
+//            }     
+////            studentId.stream().forEach(System.out::println);
+//             return student;
+//          }
+             
+          //Filter By Pincode With Stream
+           public static List<Student> filterByPincode(Integer pincode) {
+              return addressList.stream()
+                     .filter(address -> address.getPin_code()==pincode)
+                     .map(address -> address.getStudent_id())
+                     .flatMap(studentId -> studentList.stream()
+                                                      .filter(student -> student.getId()==studentId))
+                     .collect(Collectors.toList());
+}          
+
+           
              
            //Filter By Age
            public static List<Student> filterByAge(List<Student> studentList ,Integer age){

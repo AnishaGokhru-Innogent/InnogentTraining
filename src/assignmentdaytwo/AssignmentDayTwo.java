@@ -29,8 +29,8 @@ public class AssignmentDayTwo {
                 Upload.uploadAddress(new File("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\AssignmentDayTwo\\src\\CSVFiles\\Address.csv"));
 
                 //Filter By Gender
-//		List<Student> gender = Filter.filterByGender('F');
-//              gender.forEach(System.out::println);
+//		  List<Student> gender = Filter.filterByGender('F');
+//                 gender.forEach(System.out::println);
 
                 //Filter By City
 //                List<Student> city = Filter.filterByCity("indore");
@@ -53,15 +53,15 @@ public class AssignmentDayTwo {
                 
 //		1.Find all students of pincode X(ex X = 482002). I can pass different filters like gender, age, class
                 List<Student> pincode = Filter.filterByPincode(482002);
-//                pincode.forEach(System.out::println);
+                pincode.forEach(System.out::println);
                 
                 //Pincode Filtered by gender
                 List<Student> gender = Filter.filterByGender(pincode,'F');
 //                gender.forEach(System.out::println);
                 
 //              Pincode Filtered by Age
-                List<Student> age = Filter.filterByAge(pincode,22);
-                age.forEach(System.out::println);
+//                List<Student> age = Filter.filterByAge(pincode,22);
+//                age.forEach(System.out::println);
                 
                 
                 
