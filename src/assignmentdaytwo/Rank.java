@@ -8,7 +8,7 @@ import Model.Student;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//Rank
 public class Rank {
     
     public static List<Student> StudentRanking(List<Student> studentList){
